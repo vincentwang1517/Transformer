@@ -32,7 +32,7 @@ class PositionalEncoding(nn.Module):
         super().__init__()
         self.d_model = d_model
         self.seq_len = seq_len
-        self.dropout = dropout
+        self.dropout = nn.Dropout(dropout)
         
         # In positional encoding, we add the matrix pos (seq_len, d_model) to the embedded input
         pe = torch.zeros(seq_len, d_model) # (seq_len, d_model)
@@ -53,7 +53,7 @@ class PositionalEncoding(nn.Module):
 '''
 Layer Normalization
 '''
-class LayerNormalization:
+class LayerNormalization(nn.Module):
     
     def __init__(self, eps :float = 10**-6):
         super().__init__()
@@ -98,7 +98,7 @@ class MultiHeadAttentionBlock(nn.Module):
         assert d_model % h == 0, "d_model is not divisible by h"
         self.d_model = d_model
         self.h = h
-        self.d_h = d_model // h
+        self.d_k = d_model // h
         
         # Leanable Matrices
         self.w_q = nn.Linear(d_model, d_model)
@@ -134,7 +134,7 @@ class MultiHeadAttentionBlock(nn.Module):
         # Q' = q x w_q
         query = self.w_q(q)
         key = self.w_k(k)
-        key = self.w_v(v)
+        value = self.w_v(v)
         
         # multi-head... desired shape (batch, head, seq_len, d_k)
         query = query.view(query.shape[0], query.shape[1], self.h, self.d_k).transpose(1, 2)
@@ -156,6 +156,7 @@ class ResidualConnection(nn.Module):
         self.dropout = nn.Dropout(dropout)
         self.norm = LayerNormalization()
         
-    def forward(self, x, sublayer):
+    def forward(self, x, sublayer: nn.Module):
         return x + self.dropout(sublayer(self.norm(x)))
+        
         
