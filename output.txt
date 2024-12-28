@@ -1,0 +1,289 @@
+Device: cuda
+/usr/local/lib/python3.10/dist-packages/huggingface_hub/utils/_auth.py:94: UserWarning: 
+The secret `HF_TOKEN` does not exist in your Colab secrets.
+To authenticate with the Hugging Face Hub, create a token in your settings tab (https://huggingface.co/settings/tokens), set it as secret in your Google Colab and restart your session.
+You will be able to reuse this secret in all of your notebooks.
+Please note that authentication is recommended but still optional to access public models or datasets.
+  warnings.warn(
+README.md: 100%
+ 28.1k/28.1k [00:00<00:00, 2.39MB/s]
+train-00000-of-00001.parquet: 100%
+ 5.73M/5.73M [00:00<00:00, 73.0MB/s]
+Generating train split: 100%
+ 32332/32332 [00:00<00:00, 370670.67 examples/s]
+Max source sequence length: 309
+Max target sequence length: 274
+No model to preload, starting from scratch
+Epoch:  0: 100%|██████████| 1213/1213 [13:53<00:00,  1.45it/s, loss=5.854]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: Ma non è ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Il suo suo suo suo suo suo suo suo suo viso , e si .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — Non è una mia mia Aleksandrovic , — disse il suo , — disse il suo viso .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: Il suo suo suo suo suo suo suo suo suo suo suo suoi Aleksandrovic , e si era un ’ era stato , e si era la sua sua sua sua sua sua sua .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Non è una mia mia mia mia mia mia mia .
+Epoch:  1: 100%|██████████| 1213/1213 [13:53<00:00,  1.46it/s, loss=5.511]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: Io mi a me ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Ella era in quel momento che era stata la sua mano e si mise a lui .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — E io non ho detto che mi la sua moglie — disse . — E che era fatto che era fatto che era fatto che era fatto .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: Il suo momento era un ’ altra volta e il suo viso di nuovo , che aveva detto che aveva detto che aveva detto .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Ma è un po ' di un ’ un po ’ di un ’ un ’ altra e di un ’ .
+Epoch:  2: 100%|██████████| 1213/1213 [13:53<00:00,  1.46it/s, loss=5.613]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: Se io mi ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Ella aveva fatto il suo viso , e si mise a , e si mise a .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — E io sono contenta di nuovo , come ho detto , — disse Vronskij .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: La mattina era stato di casa , e il fiume era un po ’ di un ’ altra volta che era stato di lei .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Ma voi siete una donna di , — disse il sole .
+Epoch:  3: 100%|██████████| 1213/1213 [13:53<00:00,  1.46it/s, loss=5.135]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: Io ho fatto il fiume ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Egli aveva sentito che la sua erano state e .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — E io sono molto contento di nuovo , come ho detto — disse il fratello .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: a il fiume , e il fiume era un di , che era stato un ’ altra moglie .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Ma voi avete una donna di casa ?
+Epoch:  4: 100%|██████████| 1213/1213 [13:53<00:00,  1.46it/s, loss=4.596]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: Che cosa ho fatto il cavallo ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Sentiva che il suo era così , e si a le gambe , .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — E io sono molto contento di aver fatto la mia madre , perché aveva fatto la madre di Pietroburgo — disse .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: Il proprietario , dopo aver fatto che il proprietario era stato stato da pranzo , e il proprietario che aveva fatto un ’ altra moglie .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Ma vi la notte ? — domandò il signor Rochester e vi in camera .
+Epoch:  5: 100%|██████████| 1213/1213 [13:52<00:00,  1.46it/s, loss=4.590]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: E io devo fare il prato ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Sentiva che le sue erano e le .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — E io sono felice come sempre , come ho visto la madre di Pietroburgo — disse a Pietroburgo .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: Il proprietario si era stato già stato da fare il maresciallo e il maresciallo della moglie che aveva fatto un po ’ di famiglia .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Ma voi avete la notte ? — domandò il signor Rochester e il signor Rochester è .
+Epoch:  6: 100%|██████████| 1213/1213 [13:53<00:00,  1.46it/s, loss=3.993]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: Che cosa devo fare il mare ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Sentiva che la sua , i suoi pensieri e i , si a un .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — E ora sono felice , come ho visto , per la mia madre , per la madre — disse .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: Il professore Sergej Ivanovic aveva già fatto il denaro e il comandante del reggimento , che aveva fatto fare un po ’ di segala , aveva capito .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Ma voi avete fatto una casa di notte ? — domandò , dopo aver visto il posto e il signor Rochester .
+Epoch:  7: 100%|██████████| 1213/1213 [13:53<00:00,  1.46it/s, loss=4.443]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: Posso fare il capo alla palude ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Sentiva che i suoi nervi erano così e i di un ’ altra parte , le orecchie .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — E ora sono felice , in particolare , in particolare la madre , in cui c ’ era stato — disse Vronskij .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: Il consigliere titolare era stato da pranzo e il comandante del reggimento si era messo a far un po ’ di funghi .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Ma voi avete la solitudine , — disse la casa , — che vi siete una casa e la casa .
+Epoch:  8: 100%|██████████| 1213/1213 [13:53<00:00,  1.46it/s, loss=4.532]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: Posso fare la palude ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Sentiva che i suoi nervi erano e , e i di , le a vicenda .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — E ora sono in un ’ espressione di vita , in cui ho visto la madre del mio arrivo — disse a Pietroburgo .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: Il consigliere titolare si era presentato a un incontro e a prendere un bagno a un gruppo di persone che aveva moglie .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Ma voi avete sentito la notte ? — domandò la casa .
+Epoch:  9: 100%|██████████| 1213/1213 [13:53<00:00,  1.46it/s, loss=3.700]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: alla palude ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Sentiva che i suoi nervi erano come gli e i di .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — E ora sono in tanto felice , in tanto felice , in quanto ho ricevuto la madre di Pietroburgo — disse .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: Il consigliere titolare si era presentato in carrozza e aveva fatto una partita a , che aveva fatto un po ’ di stipendio .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Ma voi siete una casa ? È un vero , e voi siete vestita di freddo .
+Epoch:  10: 100%|██████████| 1213/1213 [13:53<00:00,  1.46it/s, loss=3.583]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: Posso fare la palude ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Sentiva che i nervi erano fatti come i miei , erano e , l ’ acqua .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — E ora sono in tanto felice , in particolare la mia madre , in cui ho incontrato da Pietroburgo — disse .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: Il consigliere titolare era stato da lui , e aveva fatto venire a prendere un ’ occhiata a cento ufficiali che la moglie aveva fatto sua moglie .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Ma voi avete sentito la solitudine , siete un po ' di casa e di là è freddo .
+Epoch:  11: 100%|██████████| 1213/1213 [13:53<00:00,  1.46it/s, loss=2.905]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: Posso fare la palude ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Sentiva che i nervi che erano come i suoi denti e gli a vicenda .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — E adesso sono felice , specialmente in particolare alla madre di Pietroburgo — disse a Pietroburgo .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: consigliere titolare aveva presentato a lui il comandante del reggimento e aveva fatto una partita a contro una moglie che aveva saputo sua moglie .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Ma voi siete una solitudine , la vostra casa ? — mi domandò .
+Epoch:  12: 100%|██████████| 1213/1213 [13:52<00:00,  1.46it/s, loss=3.541]
+----------------------------------------
+    SOURCE: Can I get to the marsh this way?'
+    TARGET: Si va di qua alla palude?
+ PREDICTED: Posso fare la palude ?
+----------------------------------------
+    SOURCE: She felt that her nerves were being stretched like strings drawn tighter and tighter round pegs.
+    TARGET: Sentiva che i nervi, come corde, si tendevano sempre di più come su cavicchi avvitantisi.
+ PREDICTED: Sentiva che i nervi che erano simili a pieni di e l ’ e l ’ l ’ .
+----------------------------------------
+    SOURCE: 'And I am now especially happy looking forward to my mother's arrival from Petersburg,' he had said.
+    TARGET: «E ora aspetto come una fortuna particolare l’arrivo della mamma da Pietroburgo» aveva detto lui.
+ PREDICTED: — E io sono sempre felice , sempre più felice alla madre di Pietroburgo — disse a Pietroburgo .
+----------------------------------------
+    SOURCE: Titular Councillor Wenden had been to see the Commander and had lodged a complaint against the officers who had insulted his wife.
+    TARGET: Al comandante del reggimento si era presentato un impiegato, il consigliere titolare Venden, con una querela contro gli ufficiali che gli avevano offeso la moglie.
+ PREDICTED: Il consigliere titolare era stato da vedere il comandante del reggimento e aveva fatto portare un ’ altra persona da cento ufficiali che era sua moglie .
+----------------------------------------
+    SOURCE: "But you feel solitude an oppression? The little house there behind you is dark and empty."
+    TARGET: — Ma vi sentite sola e oppressa; questa casetta è isolata e vuota.
+ PREDICTED: — Ma voi avete sentito la solitudine , — continuò la casa — siete r
