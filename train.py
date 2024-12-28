@@ -28,7 +28,7 @@ def train_model(config):
     # model
     src_vocab_size = tokenizer_src.get_vocab_size()
     tgt_vocab_size = tokenizer_tgt.get_vocab_size()
-    model = build_transformer(src_vocab_size, tgt_vocab_size, config['seq_len'], config['seq_len'], config['d_model']).to(device)
+    model = build_transformer(src_vocab_size, tgt_vocab_size, config['seq_len'], config['seq_len'], config['d_model']).to(device) # [NOTE] # .to(device): move the model to the device
     # loss function
     loss_fn = nn.CrossEntropyLoss(ignore_index=tokenizer_src.token_to_id("[PAD]"), label_smoothing=0.1).to(device)
     # optimizer
@@ -81,9 +81,9 @@ def train_model(config):
             writer.flush()
             
             # Backpropagation
-            loss.backward()
+            loss.backward() # [NOTE] 
             
-            # Update the weights (now gradient information has been passed to model.parameters())
+            # [NOTE] Update the weights (now gradient information has been passed to model.parameters())
             optimizer.step()
             optimizer.zero_grad()
             
@@ -100,34 +100,50 @@ def train_model(config):
         
         # ----- validation ---------------------------------------------------------------------------------------------------- #
         model.eval()
-        batch_iterator = tqdm(valid_dl, desc=f"Validation: {epoch: 02d}")
-        sos_idx = tokenizer_tgt.token_to_id("[SOS]")
-        eos_idx = tokenizer_tgt.token_to_id("[EOS]")
-        for batch in batch_iterator:
-            # encoder
-            encoder_input = batch["encoder_input"].to(device)
-            encoder_mask = batch["encoder_mask"].to(device)
-            assert encoder_input.shape[0] == 1, "Validation batch size must be 1"
-            encoder_output = model.encode(encoder_input, encoder_mask)
-            
-            # Generate translation output using GREEDY DECODING
-            decoder_input = torch.tensor([sos_idx], dtype=torch.int64).unsqueeze(0).to(device) # (1, 1)
-            while True:
-                if decoder_input.shape[1] >= config['seq_len']:
-                    break
-                # decoder output
-                decoder_mask = casual_mask(decoder_input.shape[1]).to(device)
-                decoder_output = model.decode(encoder_input, encoder_mask, decoder_input, decoder_mask) # (1, cur_len, d_model)
-                # find token
-                next_prob = model.project(decoder_output[:, -1]) 
-                next_token = torch.argmax(next_prob, dim=-1, keepdim=False) # (1,)
-                # concat decoder_input & token
-                decoder_input = torch.cat([decoder_input, next_token], dim=-1)
-                if next_token.item() == eos_idx:
-                    break
+        validation_count = 0
+        
+        with torch.no_grad():
+            for batch in valid_dl:
+                # encoder
+                encoder_input = batch["encoder_input"].to(device)
+                encoder_mask = batch["encoder_mask"].to(device)
+                assert encoder_input.shape[0] == 1, "Validation batch size must be 1"
+                encoder_output = model.encode(encoder_input, encoder_mask)
                 
-            # ---------- Now, decoder input is your translation result ---------- #
+                # model output of tokens
+                model_out = greedy_decoding(model, encoder_output, encoder_mask, tokenizer_src, tokenizer_tgt, config['seq_len'], device)
+                
+                src_text = batch["src_text"][0]
+                tgt_text = batch["tgt_text"][0]
+                model_out_text = tokenizer_tgt.decode(model_out.detach().cpu().numpy()) # [NOTE] # .detach(): detached from the computation graph, preventing further gradient tracking 
+                batch_iterator.write('-'*40)
+                batch_iterator.write(f"{f'SOURCE: ':>12}{src_text}")
+                batch_iterator.write(f"{f'TARGET: ':>12}{tgt_text}")
+                batch_iterator.write(f"{f'PREDICTED: ':>12}{model_out_text}")
+                
+                validation_count += 1
+                if (validation_count >= 5): break
             
+def greedy_decoding(model: Transformer, encoder_output: torch.Tensor, encoder_mask: torch.Tensor, tokenizer_src, tokenizer_tgt, max_len: int, device):
+    sos_idx = tokenizer_tgt.token_to_id("[SOS]")
+    eos_idx = tokenizer_tgt.token_to_id("[EOS]")
+    
+    decoder_input = torch.tensor([sos_idx], dtype=torch.int64).unsqueeze(0).to(device) # (1, 1)
+    while True:
+        if (decoder_input.shape[1] >= max_len): break
+        
+        # decoder output
+        decoder_mask = casual_mask(decoder_input.shape[1]).to(device)
+        decoder_output = model.decode(encoder_output, encoder_mask, decoder_input, decoder_mask) # (1, cur_len, d_model)
+        # find token
+        next_prob = model.project(decoder_output[:, -1]) # (1, 1, tgt_vocab_size)
+        next_token = torch.argmax(next_prob, dim=-1, keepdim=False).unsqueeze(0) # (1, 1)
+        # concatenate decoder_input & token
+        decoder_input = torch.cat([decoder_input, next_token], dim=-1)
+        
+        if next_token.item() == eos_idx: break  
+        
+    return decoder_input.squeeze(0) # (cur_len, )   
             
                 
                 
