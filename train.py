@@ -30,9 +30,9 @@ def train_model(config):
     tgt_vocab_size = tokenizer_tgt.get_vocab_size()
     model = build_transformer(src_vocab_size, tgt_vocab_size, config['seq_len'], config['seq_len'], config['d_model']).to(device) # [NOTE] # .to(device): move the model to the device
     # loss function
-    loss_fn = nn.CrossEntropyLoss(ignore_index=tokenizer_src.token_to_id("[PAD]"), label_smoothing=0.1).to(device)
+    loss_fn = nn.CrossEntropyLoss(ignore_index=tokenizer_src.token_to_id("[PAD]"), label_smoothing=0.1).to(device) #[NOTE]
     # optimizer
-    optimizer = torch.optim.Adam(model.parameters(), lr=config['lr'], eps=1e-9)
+    optimizer = torch.optim.Adam(model.parameters(), lr=config['lr'], eps=1e-9) #[NOTE]
     # Tensorboard
     writer = tb.SummaryWriter(config['experiment_name'])
     # others
@@ -55,7 +55,7 @@ def train_model(config):
     # --------------------------------------------------------------------------------------------------------- #
     for epoch in range(initial_epoch, config['num_epochs']):
         # ----- training ---------------------------------------------------------------------------------------------------- #
-        model.train() # set the model to training mode 
+        model.train() #[NOTE] set the model to training mode 
         batch_iterator = tqdm(train_dl, desc=f"Epoch: {epoch: 02d}") # batch iterator with progress bar
         
         for batch in batch_iterator:
@@ -73,7 +73,7 @@ def train_model(config):
             
             # calculate loss
             # CrossEntropyLoss expects the ground truth to be integer class indices, not probabilities
-            loss = loss_fn(proj_output.view(-1, tgt_vocab_size), label.view(-1)) # (batch * seq_len, tgt_vocab_size) vs. (batch * seq_len)
+            loss = loss_fn(proj_output.view(-1, tgt_vocab_size), label.view(-1)) #[NOTE] loss is a torch::Tensor (batch * seq_len, tgt_vocab_size) vs. (batch * seq_len)
             batch_iterator.set_postfix({f"loss": f"{loss.item():6.3f}"}) # display additional custom information at the end of the progress bar
             
             # Log the loss
@@ -81,11 +81,11 @@ def train_model(config):
             writer.flush()
             
             # Backpropagation
-            loss.backward() # [NOTE] 
+            loss.backward() #[NOTE] 
             
             # [NOTE] Update the weights (now gradient information has been passed to model.parameters())
-            optimizer.step()
-            optimizer.zero_grad()
+            optimizer.step() #[NOTE]
+            optimizer.zero_grad() #[NOTE]
             
             global_step += 1
             
@@ -99,10 +99,10 @@ def train_model(config):
         }, model_filename)
         
         # ----- validation ---------------------------------------------------------------------------------------------------- #
-        model.eval()
+        model.eval() #[NOTE] turn of dropout, batchnorm
         validation_count = 0
         
-        with torch.no_grad():
+        with torch.no_grad(): #[NOTE] 
             for batch in valid_dl:
                 # encoder
                 encoder_input = batch["encoder_input"].to(device)
@@ -115,7 +115,7 @@ def train_model(config):
                 
                 src_text = batch["src_text"][0]
                 tgt_text = batch["tgt_text"][0]
-                model_out_text = tokenizer_tgt.decode(model_out.detach().cpu().numpy()) # [NOTE] # .detach(): detached from the computation graph, preventing further gradient tracking 
+                model_out_text = tokenizer_tgt.decode(model_out.detach().cpu().numpy()) #[NOTE] # .detach(): detached from the computation graph, preventing further gradient tracking 
                 batch_iterator.write('-'*40)
                 batch_iterator.write(f"{f'SOURCE: ':>12}{src_text}")
                 batch_iterator.write(f"{f'TARGET: ':>12}{tgt_text}")

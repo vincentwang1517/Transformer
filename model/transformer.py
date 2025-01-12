@@ -97,9 +97,9 @@ def build_transformer(src_vocab_size: int, tgt_vocab_size: int,
     # Transformer
     transformer = Transformer(encoder, decoder, src_embed, tgt_embed, src_pos, tgt_pos, projection_layer)
     
-    # Initialize Parameters
+    # Initialize Parameters #[NOTE]
     for p in transformer.parameters():
-        if p.dim() > 1:
+        if p.dim() > 1: # weight only
             nn.init.xavier_uniform_(p)
             
     return transformer

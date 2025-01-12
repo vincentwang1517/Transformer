@@ -37,17 +37,17 @@ class PositionalEncoding(nn.Module):
         # In positional encoding, we add the matrix pos (seq_len, d_model) to the embedded input
         pe = torch.zeros(seq_len, d_model) # (seq_len, d_model)
         # pe formula
-        position = torch.arange(0, seq_len, dtype=torch.float).unsqueeze(1) # (seq_len, 1)
+        position = torch.arange(0, seq_len, dtype=torch.float).unsqueeze(1) # [NOTE] (seq_len, 1)
         div_term = torch.exp(-1 * torch.arange(0, d_model, 2, dtype=torch.float) * math.log(10000.0) / d_model) # (d_model / 2, )
         pe[:, 0::2] = torch.sin(position * div_term)
         pe[:, 1::2] = torch.cos(position * div_term)
         
         # The actual shape is (batch, seq_len, d_model)
-        pe = pe.unsqueeze(0)
-        self.register_buffer('pe', pe) # not a trainable nn.Parameter -> need to be explicitly registered
+        pe = pe.unsqueeze(0) # [NOTE]
+        self.register_buffer('pe', pe) # [NOTE] not a trainable nn.Parameter -> need to be explicitly registered
         
     def forward(self, x):
-        x = x + (self.pe[:, :x.shape[1], :]).requires_grad_(False)
+        x = x + (self.pe[:, :x.shape[1], :]).requires_grad_(False) #[NOTE]
         return self.dropout(x)
 
 '''
@@ -120,10 +120,10 @@ class MultiHeadAttentionBlock(nn.Module):
         
         # Attention scores
         # Q x K.transpose() :: For row 0, use query 0 and it's match score to all keys_j
-        attention_scores = query @ key.transpose(-1, -2) # (batch, h, seq_len, seq_len) :: Q x K.transpose()
+        attention_scores = query @ key.transpose(-1, -2) #[NOTE] (batch, h, seq_len, seq_len) :: Q x K.transpose()
         attention_scores = attention_scores / math.sqrt(d_k)
         if mask is not None:
-            attention_scores = torch.masked_fill(attention_scores, mask==0, -1e9)
+            attention_scores = torch.masked_fill(attention_scores, mask==0, -1e9) #[NOTE]
         attention_scores = torch.softmax(attention_scores, dim=-1)
         if dropout is not None:
             attention_scores = dropout(attention_scores) # (batch, h, seq_len, seq_len)
@@ -142,7 +142,7 @@ class MultiHeadAttentionBlock(nn.Module):
         value = value.view(value.shape[0], value.shape[1], self.h, self.d_k).transpose(1, 2)
         
         x, self.attention_scores = MultiHeadAttentionBlock.attention(query, key, value, mask, self.dropout) # (batch, h, seq_len, d_k)
-        x = x.transpose(1, 2).contiguous().view(x.shape[0], -1, self.h * self.d_k)
+        x = x.transpose(1, 2).contiguous().view(x.shape[0], -1, self.h * self.d_k) #[NOTE]
         
         return self.w_o(x) # (batch, seq_len, d_model)
 
